@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment Results</title>
+</head>
+<body>
+    <h1>Turf booking</h1>
+    <p><strong>Username:</strong> {{ username }}</p>
+    <p><strong>Slot:</strong> {{ selected_slot }}</p>
+
+    <table border="1">
+        <tr>
+            <th>Request</th>
+            <th>Slot</th>  <!-- Added "Slot" column header -->
+            <th>Cost</th>
+        </tr>
+        {% for assignment in assignments %}
+        <tr>
+            <td>{{ assignment.request }}</td>
+            <td>{{ assignment.slot }}</td>  <!-- Display the slot information -->
+            <td>{{ assignment.cost }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form action="/pay" method="get">
+        <input type="hidden" name="username" value="{{ username }}">
+        <input type="submit" value="Submit and Pay">
+    </form>
+
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
